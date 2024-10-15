@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  app:
+    volumes:
+      - .:/src
+    networks:
+      app.network:
+      app.internal:
+        ipv4_address: '172.18.29.3'
+
+networks:
+  app.internal:
+    internal: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.29.0/24
+  app.network:

@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  app:
+    image: ${DOCKER_REGISTRY-}demo-app-ssr
+    build:
+      context: .
+      dockerfile: .Dockerfile
+      target: production-stage
+    ports:
+      - '10700:3000'
+    volumes:
+      - demo-app:/app
+
+volumes:
+  demo-app:
